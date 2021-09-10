@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{/home/layout.html::dynamic(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="col-sm-5">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#home">Check Out</a></li>
+				<li><a data-toggle="tab" href="#menu1">Add new Address</a></li>			
+			</ul>
+
+
+			<div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+					<div class="panel panel-default">
+						<div class="panel-body">						
+								<div class="form-group col-sm-6">
+									<label>Purchaser:</label>
+									<div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+								</div>
+								<div class="form-group col-sm-6">
+									<label>Create Date: </label>
+									<div class="form-control">{{order.createDate|date: 'dd-MM-yyyy'}}</div>
+								</div>
+								<div class="form-group col-sm-12">
+									<label>Address:</label>
+									<select ng-disabled="addressesBook.length==0"  class="form-control" ng-model="order.address" id="address">									
+										<option></option>
+										<option ng-repeat="add in addressesBook" ng-value="add">{{add}}</option>									
+									</select>									
+									<div class="form-group">
+										<button class="btn btn-success" ng-click="order.purchase()">Purchase</button>
+										<button ng-click="changeTab()" class="btn btn-primary">Add new address</button>									
+									</div>
+								</div>							
+						</div>
+					</div>
+				</div>
+				<div id="menu1" class="tab-pane fade">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group col-sm-12">
+								<label>Address: </label>
+								<textarea class="form-control" ng-model="newaddress.address"></textarea>
+								<button class="btn btn-primary" ng-click="newaddress.createAddress()">Create</button>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-7">
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Item</td>
+							<td >Name</td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in cart.items">
+							<td class="cart_product"><a href=""><img
+									ng-src="{{'/img/'+item.image}}" style="width: 150px;"></a></td>
+							<td class="cart_description">
+								<h4>
+									<a href="">{{item.name}}</a>
+								</h4>
+								<p>Web ID:{{item.id}}</p>
+							</td>
+							<td class="cart_price">
+								<p>{{item.price|number:2}} VNĐ</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button input-group number-spinner">
+									<input class="form-control" id="qty" override-plus-key  ng-change="cart.saveToLocalStorage()"  ng-model="item.qty" type="number" min="1" style="width: 60px">
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">{{item.price*item.qty|number:2}} VNĐ</p>
+							</td>
+							<td class="cart_delete"><a ng-click="cart.remove(item.id)" class="cart_quantity_delete"
+								href=""><ion-icon name="close"></ion-icon></a></td>
+						</tr>											
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

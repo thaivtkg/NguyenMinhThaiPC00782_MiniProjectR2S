@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{/home/layout.html::dynamic(~{::body})}">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <section id="slider">
+        <!--slider-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-6">
+                                    <h1><span>NMT</span>-LAPTOP</h1>
+                                    <h2>AcerNitro</h2>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="/img/AcerNitro.jpg" class="girl img-responsive" alt="" />
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>NMT</span>-LAPTOP</h1>
+                                    <h2>Asus Tuf Gaming</h2>                                   
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="/img/asusTuf.jpg" class="girl img-responsive" alt="" />
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>NMT</span>-LAPTOP</h1>
+                                    <h2>MSI Prestige</h2>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="/img/msiprestige.jpg" class="girl img-responsive" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <img alt="" src="/img/leftarrow.png">
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <img alt="" src="/img/rightarrow.png">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">        
+                <div th:replace="~{/home/_menu-left.html::body}"></div>	
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items">
+                        <!--features_items-->
+                        <h2 class="title text-center">Features Items</h2>
+                        <div class="col-sm-4" th:each="items:${list}">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img th:src="@{|/img/${items.image}|}" alt="" />
+                                        <h2>[[${#numbers.formatDecimal(items.price,0,'COMMA',0,'POINT')}]]VNĐ</h2>
+                                        <p>[[${items.name}]]</p>
+                                    </div>
+                                    <div class="product-overlay">
+                                        <a href="#">
+                                            <div class="overlay-content">
+                                                <a th:href="@{|/product/detail/${items.id}|}"><h2>[[${#numbers.formatDecimal(items.price,0,'COMMA',0,'POINT')}]]VNĐ</h2>
+                                                	<p>[[${items.name}]]</p></a>
+                                                <a th:attr="ng-click=@{|cart.add(${items.id})|}" class="btn btn-default add-to-cart">Add to cart</a>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--features_items-->
+
+                    <!--/category-tab-->           
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

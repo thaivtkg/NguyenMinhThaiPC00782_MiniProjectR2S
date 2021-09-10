@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{/home/layout.html::dynamic(~{::body})}">
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div th:replace="~{/home/_menu-left.html::body}"></div>
+				<div class="col-sm-9 padding-right">					
+					<div class="features_items">										
+						<h2 class="title text-center">
+							Features Items 							
+						</h2>											
+						<div class="col-sm-4" th:each="item:${products}"  >
+							<div class="product-image-wrapper" >
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img th:src="@{|/img/${item.image}|}" alt="" />
+										<h2>[[${#numbers.formatDecimal(item.price,0,'COMMA',0,'POINT')}]]
+											VNĐ</h2>
+										<p>[[${item.name}]]</p>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<a th:href="@{|/product/detail/${item.id}|}"><h2>[[${#numbers.formatDecimal(item.price,0,'COMMA',0,'POINT')}]]VNĐ</h2>
+                                                	<p>[[${item.name}]]</p></a>
+                                                <a th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-default add-to-cart">Add to cart</a>
+										</div>
+									</div>
+									<img src="images/home/new.png" class="new" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination pagination-lg">
+							<li class="page-item" ><a  class="page-link" th:href="@{|/product/list/?brand=${brand}&&page=${currentPage-1<0?totalPages-1:currentPage-1}|}">Previous</a></li>
+							<li class="page-item"  th:each="i: ${#numbers.sequence(1,totalPages)}" th:class="${currentPage==i-1}?'active':' '"><a class="page-link" th:href="@{|/product/list/?brand=${brand}&&page=${i-1}|}">[[${i}]]</a></li>
+							<li class="page-item" ><a class="page-link" th:href="@{|/product/list/?brand=${brand}&&page=${currentPage+1>totalPages-1?0:currentPage+1}|}">Next</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

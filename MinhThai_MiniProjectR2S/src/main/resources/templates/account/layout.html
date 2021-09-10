@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:fragment="login(view)">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+<link rel="icon" href="/img/icon.png" type="image/icon type">
+<link href="/css2/bootstrap.min.css" rel="stylesheet">
+<link href="/css2/inputeffect.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/css2/login.css">
+<link rel="stylesheet" href="/css2/signup.css">
+<link rel="icon" href="/img/logo.png" type="image/icon type">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/signup.js"></script>
+<script type="text/javascript" src="/js/changepass.js"></script>
+</head>
+<body>
+<div th:replace="${view}"></div>
+</body>
+</html>

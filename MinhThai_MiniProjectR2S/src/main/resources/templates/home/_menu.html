@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <div class="header-middle">
+        <!--header-middle-->
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4 clearfix">
+                    <div class="logo pull-left">
+                        <a href="/index"><img src="/img/logo2.png" /></a>
+                    </div>
+                </div>
+
+                <div class="col-md-8 clearfix">
+                    <div class="shop-menu clearfix pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a th:if="${#request.remoteUser}">Welcome [[${#request.remoteUser}]]</a></li>                           
+                            <li>                            	
+                            	<a th:if="${#request.remoteUser}" th:href="@{/auth/logoff}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/header-middle-->
+
+    <div class="header-bottom">
+        <!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="/index" th:class="${#strings.equals(title, 'Home')}?'active':''">Home</a></li>
+                            <li><a th:href="@{/product/list}" th:class="${#strings.equals(title, 'Shop')}?'active':''">Shop</a>                             
+                            </li>
+                            <li class="dropdown"><a href="#">Account</a>
+                                <ul role="menu" class="sub-menu">
+                                    <th:block th:unless="${#request.remoteUser}"  >
+                                    	<li><a th:href="@{/auth/login/form}">Login</a></li>
+                                    	<li><a  href="/auth/signup">Sign up</a></li>
+                                    </th:block>
+                                    <th:block th:if="${#request.remoteUser}">
+                                    	<li><a  href="/auth/changepass">Change Password</a></li>
+                                    	<li><a  href="/auth/logoff">Log out</a></li>
+                                    </th:block>
+                                </ul>
+                            </li>
+                            <li><a th:href="@{/cart/checkout}" th:class="${#strings.equals(title, 'Checkout')}?'active':''">Check Out</a>
+                            <li th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('USER')}"><a th:href="@{/admin/home/index}">Administration</a></li>
+                            <li><a th:if="${#request.remoteUser}" th:href="@{/order/list}">My Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    
+                    <div class="panel panel-primary pull-right">
+                    	<a href="/cart/view">
+                    	    <div class="panel-body text-center">                  	    
+                    	        <ion-icon name="cart" size="large" style="color:royalblue"></ion-icon> <a th:href="@{/cart/view}">{{cart.count}} items x ${{cart.amount|number}}</a>
+                    	    </div>
+                    	    </a>
+                    	</div>
+                    
+                </div>
+            </div>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        </div>
+
+    </div>
+	
+    <!--/header-bottom-->
+    <!--/header-->
+</body>
+
+</html>

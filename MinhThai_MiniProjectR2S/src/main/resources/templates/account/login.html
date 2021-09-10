@@ -1,0 +1,40 @@
+<!DOCTYPE html><html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{/account/layout.html::login(~{::body})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="container">
+	    <div class="row">	   
+	      <th:block th:unless="${#request.remoteUser}">
+	      	<div class="col-lg-10 col-xl-9 mx-auto">
+	      	  <div class="card card-signin flex-row my-5">
+	      	    <div class="card-img-left d-none d-md-flex">
+	      	       <!-- Background image for card set in CSS! -->
+	      	    </div>
+	      	    <div class="card-body">       	                     	
+	      	      		<h5 class="card-title text-center">Đăng nhập</h5>    
+	      	      		<form  class="form-signin" th:action="@{/auth/login}" method="post">
+	      	      		  <div class="form-label-group input-effect">
+	      	      		    <input type="text" name="username"  class="effect-4" placeholder="Username?">
+	      	      		    <span class="focus-border"></span>
+	      	      		  </div>
+	      	      			
+	      	      		 <div class="form-label-group input-effect">
+	      	      		    <input type="password" name="password"  class="effect-4" placeholder="Password">
+	      	      		    <span class="focus-border"></span>
+	      	      		  </div>
+	      	      		                            
+	      	      		  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign In</button>
+	      	      		  <h4 class="text-center">Or</h4>
+	      	      		  <a class="btn btn-google btn-block" href="/oauth2/authorization/google">Login with Google</a>
+	      	      		  <a class="btn btn-facebook btn-block" href="/oauth2/authorization/facebook">Login with FaceBook</a>
+	      	      		  <a class="d-block text-center mt-2 small" href="/auth/signup">Create new account</a>            	 
+	      	      		</form>
+	      	    </div>
+	      	  </div>
+	      	</div>
+	      </th:block>
+	    </div>
+	  </div>
+</body>

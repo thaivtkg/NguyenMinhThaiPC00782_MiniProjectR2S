@@ -1,0 +1,85 @@
+<div class="card">
+	<div class="card-header bg-primary text-light text-center">
+		<h4 class="text-light">Product Edition</h4>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-4 text-center">
+				<img class="card-img-top" ng-src="{{'/img/' +form.image}}"></img>
+			</div>
+			<div class="col-sm-8">
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<div>Name</div>
+						<div class="input-group">
+							<input ng-model="form.name" class="form-control"
+								ng-class="error.name?'border-danger':' '">
+							<div class="input-group-append" ng-show="error.name">
+								<span class="input-group-text fa fa-times bg-danger text-light"></span>
+							</div>
+						</div>
+						<span class="text-danger" ng-show="error.name">{{error.name}}</span>
+					</div>
+					<div class="form-group col-sm-6">
+						<div>Price</div>
+						<div class="input-group">
+							<input ng-model="form.price" class="form-control" ng-class="error.price?'border-danger':' '"> 
+							<div class="input-group-append" ng-show="error.price">
+								<span class="input-group-text fa fa-times bg-danger text-light"></span>
+							</div>
+						</div>
+						<span class="text-danger" ng-show="error.price">{{error.price}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<div>Image</div>
+						<input type="file" ng-model="form.image" class="form-control" id="image" onchange="angular.element(this).scope().imageChanged(this.files)">
+					</div>
+					<div class="form-group col-sm-6">
+						<div>Brand</div>
+						<div class="input-group">
+							<select ng-model="form.brand.id" class="form-control" ng-class="error.brand?'border-danger':' '">
+								<option ng-repeat="b in brands" ng-value="b.id">{{b.name}}</option>
+							</select>
+							<div class="input-group-append" ng-show="error.brand">
+								<span class="input-group-text fa fa-times bg-danger text-light"></span>
+							</div> 
+						</div>
+						<span class="text-danger" ng-show="error.brand">{{error.brand}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<div>Create Date:</div>
+						<input ng-model="form.createDate" type="date" class="form-control">
+					</div>
+					<div class="form-group col-sm-6">
+						<div>Available?</div>
+						<label class="radio-inline"> <input
+							ng-model="form.available" ng-value="true" name="available"
+							type="radio">Yes
+						</label> <label class="radio-inline"> <input
+							ng-model="form.available" ng-value="false" name="available"
+							type="radio">No
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer text-center">
+		<button class="btn btn-primary" ng-click="create()">
+			<b class="fa fa-plus"></b> Create
+		</button>
+		<button class="btn btn-success" ng-click="update()">
+			<b class="fa fa-edit"></b> Update
+		</button>
+		<button class="btn btn-danger" ng-click="delete(form.id)">
+			<b class="fa fa-trash"></b> Delete
+		</button>
+		<button class="btn btn-info" ng-click="reset()">
+			<b class="fa fa-recycle"></b> Reset
+		</button>
+	</div>
+</div>

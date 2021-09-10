@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<title>Administrator</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css">		
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="icon" href="/img/administrator.png" type="image/icon type">
+</head>
+
+<body ng-app="admin-app">
+	<div class="wrapper d-flex">
+		<nav id="sidebar" class="active">
+			<h1>
+				<a href="/index" class="logo"><img alt=""
+					src="/img/logo2.png" class="img-fluid"></a>
+			</h1>
+			<ul class="list-unstyled components mb-5">
+				<li><a href="/index"><span class="fa fa-home"></span>Home</a></li>
+				<li><a href="#!product" ><span class="fa fa-edit"></span>Products Manager</a></li>
+				<li><a href="#!authority"><span class="fa fa-user"></span> Authority</a></li>
+				<li><a href="#!report"><span class="fa fa-file"></span>Report</a></li>
+				<li><a href="#!account"><span class="fa fa-users"></span>Account</a></li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content" class="p-4 p-md-5 pt-5">	
+				<div class="container">
+					<p class="ng-view"></p>
+				</div>
+		</div>
+	</div>
+
+	<script src="/js2/jquery.min.js"></script>
+	<script src="/js2/popper.js"></script>
+	<script src="/js2/bootstrap.min.js"></script>
+	<script src="/admin/admin-app.js"></script>
+	<script src="/admin/product/product-ctrl.js"></script>
+	<script src="/admin/authority/authority-ctrl.js"></script>
+	<script src="/admin/report/report-ctrl.js"></script>
+	<script src="/admin/account/account-ctrl.js"></script>
+	
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<div class="card">
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>Brand</th>
+				<th>Quantity</th>
+				<th>Revenue</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in brandRevenue">
+				<td>{{item.group.name}}</td>
+				<td>{{item.quantity}}</td>
+				<td>{{item.revenue|number}} VNĐ</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

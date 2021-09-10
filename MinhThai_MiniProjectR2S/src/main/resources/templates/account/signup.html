@@ -1,0 +1,39 @@
+<!DOCTYPE html><html xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{/account/layout.html::login(~{::body})}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body ng-app="sign-up-app" ng-controller="sign-up-ctrl">
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card card-signup flex-row my-5">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Đăng kí tài khoản mới</h5>                                         
+                            <div class="form-label-group input-effect">
+                                <input type="text" name="username" class="effect-4" placeholder="Username" ng-model="account.username"> <span class="focus-border"></span>
+                            </div>
+                            <div class="form-label-group input-effect">
+                                <input type="text" name="fullname" class="effect-4" placeholder="Fullname" ng-model="account.fullname"> <span class="focus-border"></span>
+                            </div>   
+                            <div class="form-label-group input-effect">
+                                <input type="text" name="email" class="effect-4" placeholder="Email?" ng-model="account.email"> <span class="focus-border"></span>
+                            </div>                           
+                           <div class="form-label-group input-effect">
+                                <input type="password" name="password" class="effect-4" placeholder="Password" ng-model="account.password"> <span class="focus-border"></span>
+                            </div>
+                            <div class="form-label-group input-effect">
+                                <input type="password" name="confirmpass" class="effect-4" placeholder="Confirm password" ng-model="confirmpass"> <span class="focus-border"></span>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" ng-click="signup()">Sign Up</button>
+                            <a class="d-block text-center mt-2 small" href="/auth/login/form">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

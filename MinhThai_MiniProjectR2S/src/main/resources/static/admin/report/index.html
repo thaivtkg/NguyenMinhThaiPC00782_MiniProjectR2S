@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" data-target="#product" href="">Revenue By Product</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" data-target="#brand" href="">Revenue By Brand</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" data-target="#topseller" href="">Top Seller</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane  active" id="product">
+  	<div ng-include="'/admin/report/_table1.html'"></div>
+  </div>
+  <div class="tab-pane fade" id="brand">
+  <div ng-include="'/admin/report/_table2.html'"></div>
+  </div>
+  <div class="tab-pane fade" id="topseller">
+  	<div ng-include="'/admin/report/_table3.html'"></div>
+  </div>
+</div>

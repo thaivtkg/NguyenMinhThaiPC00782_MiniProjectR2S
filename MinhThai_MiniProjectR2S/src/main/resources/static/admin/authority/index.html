@@ -1,0 +1,19 @@
+<div class="card">
+	<div class="card-heading bg-primary text-center"><h4 class="text-light">Authority</h4></div>
+	<table class="table">
+		<thead class="thead-dark">
+				<tr>
+					<th></th>
+					<th ng-repeat="role in roles" class="text-center">{{role.name}}</th>
+				</tr>
+		</thead>
+		<tbody>
+				<tr ng-repeat="acc in admins">
+					<td>{{acc.fullname}}</td>
+					<th ng-repeat="role in roles" class="text-center">
+						<input ng-disabled="role.id=='ADMIN'" ng-checked="authority_of(acc,role)" ng-click="authority_changed(acc,role)" type="checkbox">
+					</th>
+				</tr>
+			</tbody>
+	</table>
+</div>

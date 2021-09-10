@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https:www.thymeleaf.org"
+	th:replace="~{/home/layout::dynamic(~{::main})}">
+</head>
+
+<body>
+	<main class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">Your Orders Purchased</div>	
+				<div class="table-responsive">
+					<table class="table table-condensed table-striped">
+						<thead class="bg-info">
+							<tr>
+								<th>No.</th>
+								<th>Order Id</th>
+								<th>Order Date</th>
+								<th>Shipping Address</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="order,state:${order}">
+								<td>[[${state.index}]]</td>
+								<td>[[${order.id}]]</td>
+								<td>[[${order.createDate}]]</td>
+								<td>[[${order.address}]]</td>
+								<td><a th:href="@{|/order/detail/${order.id}|}"
+									class="btn btn-default"><ion-icon name="search-outline"></ion-icon></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		</div>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{/home/layout.html::dynamic(~{::body})}">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+            <div th:replace="~{/home/_menu-left.html::body}"></div>          
+                <div class="col-sm-9 padding-right">
+                    <div class="product-details" th:object="${product}">
+                        <!--product-details-->
+                        <div class="col-sm-5">
+                            <div class="view-product">
+                                <img th:src="@{|/img/*{image}|}" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="product-information">
+                                <!--/product-information-->
+                                <img src="/images/product-details/new.jpg" class="newarrival" alt="" />
+                                <h2>[[*{name}]]</h2>
+                                <p>ID: [[*{id}]]</p>
+                                <span>
+									<span>[[*{#numbers.formatDecimal(price,0,'COMMA',0,'POINT')}]]
+											VNĐ</span>
+										<button type="button" class="btn btn-fefault cart mr-2" th:attr="ng-click=@{|cart.add(*{id})|}">
+										<i class="glyphicon glyphicon-shopping-cart" ></i>
+										Add to cart
+								</button> 
+                                <label>Quantity:</label>
+                                <input type="number" value="1" step="1" min="1" ng-model="cart.quantity" />
+                                
+                                </span>
+                                
+                                <p><b>Availability:</b> [[*{available}?'In Stock':' ']]</p>
+                                <p><b>Brand:</b> [[*{brand.name}]]</p>                            
+                            </div>
+                            <!--/product-information-->
+                            
+                        </div>
+                    </div>
+                    <!--/product-details-->
+
+                    <!--/category-tab-->
+
+                    <div class="recommended_items">
+                        <!--recommended_items-->
+                        <h2 class="title text-center">recommended items</h2>
+                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="col-sm-4" th:each="item:${list}">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img th:src="@{|/img/${item.image}|}" alt="" />
+                                                    <h2>[[*{#numbers.formatDecimal(item.price,0,'COMMA',0,'POINT')}]]
+											VNĐ</h2>
+                                                    <p>[[${item.name}]]</p>
+                                                    <button type="button" class="btn btn-default add-to-cart"><i class="glyphicon glyphicon-shopping-cart"></i>Add to cart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                                                     
+                                </div>                            
+                            </div>
+                            <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                               <img alt="" src="/images/home/leftarrow.png">
+                            </a>
+                            <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                                <img alt="" src="/images/home/rightarrows.png">
+                            </a>
+                        </div>
+                    </div>
+                    <!--/recommended_items-->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
